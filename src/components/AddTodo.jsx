@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../store/todoSlice";
 import { Plus, X, Flag, Sparkles } from "lucide-react";
@@ -46,7 +46,7 @@ function AddTodo() {
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                         placeholder="What needs to be done today?..."
-                        className="w-full bg-slate-950/60 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3.5 pr-10 text-base outline-none border border-slate-800/80 focus:border-indigo-500/50 transition-all duration-200"
+                        className="w-full bg-slate-950/60 text-slate-100 placeholder:text-slate-500 rounded-xl px-4 py-3.5 pr-10 text-base outline-none border border-slate-800/80 focus:border-indigo-500/50 transition-all duration-200"
                     />
                     {input && (
                         <button

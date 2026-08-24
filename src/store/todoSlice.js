@@ -1,10 +1,22 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-
-const initialState = {
-    todos: [],
-    filter: "all",
+const loadState = () => {
+    try {
+        const serializedState = localStorage.getItem("todo_app_state");
+        if (serializedState === null) {
+            return { todos: [], filter: "all" };
+        }
+        const parsed = JSON.parse(serializedState);
+        return {
+            todos: Array.isArray(parsed.todos) ? parsed.todos : [],
+            filter: parsed.filter || "all",
+        };
+    } catch {
+        return { todos: [], filter: "all" };
+    }
 };
+
+const initialState = loadState();
 
 export const todoSlice = createSlice({
     name: "todo",

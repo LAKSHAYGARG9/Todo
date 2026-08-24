@@ -7,4 +7,13 @@ export const store = configureStore({
     },
 });
 
+store.subscribe(() => {
+    try {
+        const state = store.getState();
+        localStorage.setItem("todo_app_state", JSON.stringify(state.todo));
+    } catch {
+        // Ignore write errors
+    }
+});
+
 export default store;
